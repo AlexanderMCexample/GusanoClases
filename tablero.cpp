@@ -13,7 +13,10 @@ void Tablero::imprimirMatriz()
     {
         for (int col = 0; col < 10; col++)
         {
-            cout << world_Mapa[row][col];
+            if (world_Mapa[row][col] == 0) // 0 = vacío
+                {
+                    cout << "_";
+                }
         }
         cout << endl;
     }
