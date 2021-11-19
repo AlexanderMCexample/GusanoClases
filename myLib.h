@@ -2,3 +2,4 @@
 
 void controles();
 void posicion();
+void tablero();

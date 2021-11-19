@@ -138,5 +138,3 @@ void Control::mando2()
     interaccionControlDos();
     setDireccion();
 } 
-
-

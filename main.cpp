@@ -4,9 +4,9 @@
 using namespace std;    
 
 int main() 
-{
-    controles();
-    posicion();
-    
+{    
+    //controles();
+    //posicion();
+    tablero();
     return 0;
 }
