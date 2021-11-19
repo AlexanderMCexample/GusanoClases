@@ -15,7 +15,7 @@ void Posicion::getx(int &_x)
 {
 	_x=x;
 }
-void Posicion::gety(int &_x)
+void Posicion::gety(int &_y)
 {
 	_y=y;
 }

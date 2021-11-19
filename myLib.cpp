@@ -6,7 +6,9 @@
 //clases
 #include "controles.cpp"
 #include "posicion.cpp"
+#include "obstaculo.cpp"
 
+#include "tablero.cpp"
 using namespace std;
 
 void controles()
@@ -29,4 +31,10 @@ void posicion()
 	Posicion gus2(0,0);
 	Posicion comida(5,5);
 	Posicion poder(7,7);
+}
+
+void tablero()
+{
+    Tablero tabla;
+    tabla.imprimirMatriz();
 }
