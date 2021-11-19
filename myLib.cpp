@@ -5,6 +5,7 @@
 #include <string> //string 
 //clases
 #include "controles.cpp"
+#include "posicion.cpp"
 
 using namespace std;
 
@@ -21,5 +22,11 @@ void controles()
         cont1.getDireccion(direccion1);
         cout <<direccion1<<endl;
     }
-
+}
+void posicion()
+{
+	Posicion gus1(10,10);
+	Posicion gus2(0,0);
+	Posicion comida(5,5);
+	Posicion poder(7,7);
 }
