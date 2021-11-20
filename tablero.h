@@ -2,7 +2,7 @@ class Tablero {
     //Atributos
     public:
     int world_Mapa[10][10];
-    
+    Obstaculo obs;
 
     //Constructor
     Tablero (int _sizeX=0, int _sizeY=0)
