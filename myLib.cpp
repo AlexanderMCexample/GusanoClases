@@ -42,11 +42,12 @@ void tablero()
     cout << "Ingrece el tamaño de su tablero: ";
     cin >> size;
     Tablero tabla(size); 
+    tabla.generarMuros();
     tabla.setControlGusanoDos();
     tabla.setControlGusanoUno();
     while(true)
     {
-        tabla.movimientoGusano();
+        tabla.movimientoGusano(); //Actualiza los movimientos del gusano
         tabla.imprimirMatriz();
         for (double time = 0; time < 600;time+=0.05)  //tiempo para imprimir y capturar la tecla
         {

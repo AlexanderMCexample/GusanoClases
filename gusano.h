@@ -5,6 +5,7 @@ class Gusano {
     Posicion pos; //LLamamos nuestra clase Posicion
     Control control;
     int tamanoGusano;
+    int size;
     int maxTamanoGusano;
     char simbolo;
     std::string direccion;
@@ -13,6 +14,7 @@ class Gusano {
     Gusano (int size =1, int _x = 0, int _y=0,  char simbolo = '&'){ //El constructor nos da valores iniciales para todos nuestro atributos
         tamanoGusano = 0;
         maxTamanoGusano = size;
+        this->size = size;
         this -> simbolo = simbolo;
         pos = Posicion(_x,_y); //pos simpre es la ubicación x,y de la cabeza 
         direccion = "";

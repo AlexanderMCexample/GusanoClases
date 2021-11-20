@@ -28,7 +28,7 @@ void Gusano::reducir()
 }
 void Gusano::rebotar(std::string _direccion)
 {
-    _direccion = "";
+    direccion =_direccion;
 }
 void Gusano::perder()
 {

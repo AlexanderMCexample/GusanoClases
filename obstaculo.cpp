@@ -33,47 +33,8 @@ void Obstaculo::getSimbolo(char &_simbolo) //Método que llama el simbolo de nue
     _simbolo = simbolo;
 }
 
-void Obstaculo::cambioDireccion(std::string &_direccion, int gusanoX, int gusanoY) 
+char Obstaculo::getSimbolo()
 {
-    int obsX,obsY;
-    getPosX(obsX);
-    getPosY(obsY);
-
-    if (obsY == gusanoY-1 && _direccion == "ARRIBA")//obtener valores de gusano 
-    {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
-    } 
-    else if (obsY == gusanoY+1 && _direccion == "ABAJO")
-    {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
-    } 
-    else if (obsX == gusanoX+1 && _direccion == "DERECHA")
-    {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
-    }
-    else if (obsX == gusanoX-1 && _direccion == "IZQUIERDA")
-    {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
-    }
-}
-void Obstaculo::direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY)  //Método que nos ayuda a buscar una casilla vacía dentro de nuestro tablero para que los gusanos puedan cambiar su direción al chocar
-{
-    if (0 == gusanoY-1)//si en una dirección esta vacia el gusano rebotará en esa direccion
-    {
-        _direccion = "ARRIBA";
-    } 
-    else if (0 == gusanoY+1)
-    {
-        _direccion = "ABAJO";
-    } 
-    else if (0 == gusanoX+1)
-    {
-        _direccion = "DERECHA";
-    }
-    else if (0 == gusanoX-1)
-    {
-        _direccion = "IZQUIERDA";
-    }
-    //else direccion = lose
+    return simbolo;
 }
 

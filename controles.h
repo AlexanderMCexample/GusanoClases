@@ -24,10 +24,12 @@ class Control {
     void setIzquierda(int _tecla);
     void setTeclaPresionada(int _tecla);
     void setDireccion();
+    void setDireccion(std::string _teclaPresionada);
     
     //get
     void getTeclaPresionada(int &_tecla);
     void getDireccion(std::string &_direccion);
+    std::string getDireccion();
 
     void defautControlUno();
     void defautControlDos();

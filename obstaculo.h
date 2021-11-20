@@ -24,7 +24,6 @@ class Obstaculo {
     void getPosX(int &_x);
     void getPosY(int &_y);
     void getSimbolo(char &_simbolo);
-
-    void cambioDireccion(std::string &_direccion, int gusanoX, int gusanoY);
-    void direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY);
+    char getSimbolo();
+    
 };

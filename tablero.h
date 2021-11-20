@@ -8,12 +8,14 @@ class Tablero {
     Poder poder;  //LLamamos nuestra clase Poder
     Gusano *gusano;
     int size;
+    int gusanoX1, gusanoY1, gusanoX2, gusanoY2;
     int **world_Mapa;
 
     //Constructor
     Tablero(int size =10)  //El constructor nos da valores iniciales para todos nuestro atributos
     {
         this -> size =size; 
+        gusanoX1=0; gusanoY1=0; gusanoX2=0; gusanoY2=0;
         world_Mapa = new int*[size];
         for (int i = 0; i < size; i++)
         {
@@ -52,7 +54,12 @@ class Tablero {
     void setControlGusanoUno();
     void setControlGusanoDos();
 
+    void setPosicionesCabeza1();
+    void setPosicionesCabeza2();
+
     void mandoGusanoUno();
     void mandoGusanoDos();
     void movimientoGusano();
+    void cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY);
+    void direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY);
 };

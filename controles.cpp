@@ -95,10 +95,34 @@ void Control::setDireccion() //para saber a que dirección apunta el gusano
         direccion = "IZQUIERDA";
     }
 }
+
+void Control::setDireccion(std::string _direccion) //para saber a que dirección apunta el gusano
+{
+    if (_direccion=="ARRIBA")
+    {
+        teclaPresionada = arriba;
+    }
+    else if (_direccion=="ABAJO")
+    {
+        teclaPresionada = abajo;
+    }
+    else if (_direccion=="DERECHA")
+    {
+        teclaPresionada = derecha;
+    }
+    else if (_direccion=="IZQUIERDA")
+    {
+        teclaPresionada = izquierda;
+    }
+}
     
 void Control::getDireccion(std::string &_direccion)
 {
     _direccion = direccion;
+}
+std::string Control::getDireccion()
+{
+    return direccion;
 }
 
 void Control::setTeclaPresionada(int _tecla)
