@@ -1,7 +1,8 @@
 class Gusano {
-    //Atributos
+
     public:
-    Posicion pos;
+    //Atributos
+    Posicion pos; //LLamamos nuestra clase Posicion
     Control control;
     int tamanoGusano;
     int maxTamanoGusano;
@@ -9,7 +10,7 @@ class Gusano {
     std::string direccion;
 
     //Constructor
-    Gusano (int size =1, int _x = 0, int _y=0,  char simbolo = '&'){
+    Gusano (int size =1, int _x = 0, int _y=0,  char simbolo = '&'){ //El constructor nos da valores iniciales para todos nuestro atributos
         tamanoGusano = 0;
         maxTamanoGusano = size;
         this -> simbolo = simbolo;
@@ -17,7 +18,7 @@ class Gusano {
         direccion = "";
     }
 
-    //Destructor
+    //Destructor de nuestra Clase
     ~Gusano (){
     }
     

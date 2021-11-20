@@ -4,16 +4,19 @@ class Posicion {
     
     int x,y;
 
-    Posicion(int x=0, int y=0){
+    Posicion(int x=0, int y=0){ //Iniciamos nuestros atributos principales
 
         this -> x = x;
         this -> y = y;
 
     }
 
-    ~Posicion(){
+    ~Posicion(){ //Destructor de nuestra clase
     }
 
+
+
+    //Métodos
     void setx(int _x);
     void sety(int _y);
 

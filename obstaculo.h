@@ -2,17 +2,17 @@ class Obstaculo {
     //Atributos
     public:
 
-    Posicion pos;    
+    Posicion pos;    //Llamamos nuestra clase Posicion
     char simbolo;
 
 
     //Constructor
-    Obstaculo(int x =0, int y=0,  char simbolo = '#'){
+    Obstaculo(int x =0, int y=0,  char simbolo = '#'){   //El constructor nos da valores iniciales para todos nuestro atributos
         pos = Posicion(x,y);       
         this -> simbolo = simbolo;
     }
 
-    //Destructor
+    //Destructor de nuestra clase
     ~Obstaculo(){
     }
     

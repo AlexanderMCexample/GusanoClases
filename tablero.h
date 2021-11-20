@@ -3,15 +3,15 @@
 class Tablero {
     //Atributos
     public:
-    Obstaculo obs;
-    Comida comida;
-    Poder poder; 
+    Obstaculo obs; //Llamamos nuestra clase Obstaculo
+    Comida comida; //LLamamos nuestra clase Comida
+    Poder poder;  //LLamamos nuestra clase Poder
     Gusano *gusano;
     int size;
     int **world_Mapa;
 
     //Constructor
-    Tablero(int size =10)
+    Tablero(int _sizeX=0, int _sizeY=0)  //El constructor nos da valores iniciales para todos nuestro atributos
     {
         this -> size =size; 
         world_Mapa = new int*[size];
@@ -34,7 +34,7 @@ class Tablero {
         
     }
 
-    //Destructor
+    //Destructor de nuestra Clase
     ~Tablero(){
         delete[] gusano;
         for (int i = 0; i < size; i++)

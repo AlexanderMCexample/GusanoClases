@@ -26,7 +26,7 @@ class Poder {
     }
 
 
-    //Metodos
+    //Métodos
     void Generarpoder(); 
     void Comprobarsenal();
     char getSimbolo();
