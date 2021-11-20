@@ -38,7 +38,10 @@ void posicion()
 
 void tablero()
 {
-    Tablero tabla(20); 
+    int size=0;
+    cout << "Ingrece el tamaño de su tablero: ";
+    cin >> size;
+    Tablero tabla(size); 
     tabla.setControlGusanoDos();
     tabla.setControlGusanoUno();
     while(true)

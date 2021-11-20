@@ -11,7 +11,7 @@ class Tablero {
     int **world_Mapa;
 
     //Constructor
-    Tablero(int _sizeX=0, int _sizeY=0)  //El constructor nos da valores iniciales para todos nuestro atributos
+    Tablero(int size =10)  //El constructor nos da valores iniciales para todos nuestro atributos
     {
         this -> size =size; 
         world_Mapa = new int*[size];
