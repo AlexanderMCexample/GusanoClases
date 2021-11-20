@@ -7,7 +7,7 @@
 
 using namespace std;   
 
-void Tablero::imprimirMatriz()
+void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestro tablero de juego. Todos y cada uno de los elementos
 {
 	world_Mapa[comida.getPosY()][comida.getPosX()]=1;
 

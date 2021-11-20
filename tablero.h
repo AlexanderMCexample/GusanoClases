@@ -2,9 +2,9 @@ class Tablero {
     //Atributos
     public:
     int world_Mapa[10][10];
-    Obstaculo obs;
-    Comida comida;
-    Poder poder; 
+    Obstaculo obs; //Llamamos nuestra clase Obstaculo
+    Comida comida; //LLamamos nuestra clase Comida
+    Poder poder;  //LLamamos nuestra clase Poder
 
 
     //Constructor
@@ -20,7 +20,7 @@ class Tablero {
         comida=Comida(3,3);
     }
 
-    //Destructor
+    //Destructor de nuestra Clase
     ~Tablero(){
     }
     
