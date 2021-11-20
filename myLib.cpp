@@ -10,7 +10,7 @@
 #include "comida.cpp"
 #include "poder.cpp"
 #include "tablero.cpp"
-#include "gusano.cpp"
+//#include "gusano.cpp"
 
 using namespace std;
 
@@ -38,6 +38,20 @@ void posicion()
 
 void tablero()
 {
-    Tablero tabla;
-    tabla.imprimirMatriz();
+    Tablero tabla(20); 
+    tabla.setControlGusanoDos();
+    tabla.setControlGusanoUno();
+    while(true)
+    {
+        tabla.movimientoGusano();
+        tabla.imprimirMatriz();
+        for (double time = 0; time < 800;time+=0.05)  //tiempo para imprimir y capturar la tecla
+        {
+            tabla.mandoGusanoUno();
+            tabla.mandoGusanoDos();
+        }
+        cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    }
+
+
 }

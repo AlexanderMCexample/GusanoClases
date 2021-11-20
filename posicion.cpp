@@ -27,3 +27,13 @@ int Posicion::gety()
 {
 	return y;
 }
+
+void Posicion::incrementarX(int _x)
+{
+	x+=_x;
+}
+
+void Posicion::incrementarY(int _y)
+{
+	y+=_y;
+}
