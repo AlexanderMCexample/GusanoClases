@@ -1,11 +1,14 @@
 class Tablero {
     //Atributos
     public:
+
     int world_Mapa[10][10];
     Comida comida;
-    
+    Poder poder; 
+
+
     //Constructor
-    Tablero (int _sizeX=0, int _sizeY=0)
+    Tablero(int _sizeX=0, int _sizeY=0)
     {
         for (int row = 0; row < 10; row++)
         {

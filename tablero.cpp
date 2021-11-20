@@ -10,6 +10,9 @@ using namespace std;
 void Tablero::imprimirMatriz()
 {
 	world_Mapa[comida.getPosY()][comida.getPosX()]=1;
+
+    world_Mapa[2][2] = 2;
+
     for (int row = 0; row < 10; row++)
     {
         for (int col = 0; col < 10; col++)
@@ -22,7 +25,11 @@ void Tablero::imprimirMatriz()
             	{
             		cout << comida.getSimbolo();
 				}
-        }
+            else if (world_Mapa[row][col] == 2) // 2 = poder
+                {
+                    cout << poder.getSimbolo();
+                }
+        }   
         cout << endl;
     }
 }
