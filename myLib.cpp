@@ -48,7 +48,7 @@ void tablero()
     {
         tabla.movimientoGusano();
         tabla.imprimirMatriz();
-        for (double time = 0; time < 800;time+=0.05)  //tiempo para imprimir y capturar la tecla
+        for (double time = 0; time < 600;time+=0.05)  //tiempo para imprimir y capturar la tecla
         {
             tabla.mandoGusanoUno();
             tabla.mandoGusanoDos();

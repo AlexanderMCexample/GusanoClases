@@ -9,8 +9,6 @@ using namespace std;
 
 void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestro tablero de juego. Todos y cada uno de los elementos
 {
-    world_Mapa[gusano[0].getCabezaPosY()][gusano[0].getCabezaPosX()]=5;
-    world_Mapa[gusano[1].getCabezaPosY()][gusano[1].getCabezaPosX()]=6;
 	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
     world_Mapa[2][2] = 2;
 
@@ -62,6 +60,10 @@ void Tablero::mandoGusanoDos()
 }
 void Tablero::movimientoGusano()
 {
-    gusano[0].movimientoConstante();
+    world_Mapa[gusano[0].getCabezaPosY()][gusano[0].getCabezaPosX()]=0; //posición anterior = 0
+    world_Mapa[gusano[1].getCabezaPosY()][gusano[1].getCabezaPosX()]=0;
+    gusano[0].movimientoConstante(); //movimiento constante de la serpiente
     gusano[1].movimientoConstante();
+    world_Mapa[gusano[0].getCabezaPosY()][gusano[0].getCabezaPosX()]=5; //coloca la nueva posición
+    world_Mapa[gusano[1].getCabezaPosY()][gusano[1].getCabezaPosX()]=6;
 }

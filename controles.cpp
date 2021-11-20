@@ -28,7 +28,7 @@ void Control::interaccionControlUno()
                 default:
                     break;
             }
-            setTeclaPresionada(tecla);
+            teclaPresionada = tecla;
         }
     }
 }
@@ -54,7 +54,7 @@ void Control::interaccionControlDos()
                 default: 
                     break;
             }
-            setTeclaPresionada(tecla);
+            teclaPresionada = tecla;
         }
     }
 }
