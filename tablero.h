@@ -3,6 +3,7 @@ class Tablero {
     public:
     int world_Mapa[10][10];
     Obstaculo obs;
+    Comida comida;
     Poder poder; 
 
 
@@ -16,6 +17,7 @@ class Tablero {
                 world_Mapa[row][col] = 0;
             }
         }
+        comida=Comida(3,3);
     }
 
     //Destructor
@@ -23,6 +25,6 @@ class Tablero {
     }
     
     //Métodos
-
+	
     void imprimirMatriz();
 };

@@ -7,9 +7,10 @@
 #include "controles.cpp"
 #include "posicion.cpp"
 #include "obstaculo.cpp"
+#include "comida.cpp"
 #include "poder.cpp"
-
 #include "tablero.cpp"
+
 using namespace std;
 
 void controles()
