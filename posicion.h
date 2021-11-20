@@ -11,9 +11,12 @@ class Posicion {
 
     }
 
-    ~Posicion(){
+    ~Posicion(){ //Destructor de nuestra clase
     }
 
+
+
+    //Métodos
     void setx(int _x);
     void sety(int _y);
 
