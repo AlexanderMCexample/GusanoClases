@@ -4,21 +4,21 @@ class Comida {
     //Atributos
     public:
 
-    Posicion pos_comida;    
+    Posicion pos_comida;   //LLamamos la clase Posicion
     char simbolo;
 
 
     //Constructor
-    Comida(int comida_x =0, int comida_y=0,  char simbolo = '@'){
+    Comida(int comida_x =0, int comida_y=0,  char simbolo = '@'){ //El constructor nos da valores iniciales para todos nuestro atributos
 		pos_comida = Posicion(comida_x,comida_y);
-        this -> simbolo = simbolo;
+        this -> simbolo = simbolo; 
     }
 
-    //Destructor
+    //Destructor de neustra clase
     ~Comida(){
     }
     
-    //Metidos
+    //Métodos
     void setSimbolo(char _simbolo);
     void setPosX(int _x);
     void setPosY(int _y);

@@ -8,7 +8,7 @@ class Tablero {
 
 
     //Constructor
-    Tablero(int _sizeX=0, int _sizeY=0)
+    Tablero(int _sizeX=0, int _sizeY=0)  //El constructor nos da valores iniciales para todos nuestro atributos
     {
         for (int row = 0; row < 10; row++)
         {
