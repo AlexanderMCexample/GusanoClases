@@ -10,6 +10,7 @@
 #include "comida.cpp"
 #include "poder.cpp"
 #include "tablero.cpp"
+#include "gusano.cpp"
 
 using namespace std;
 

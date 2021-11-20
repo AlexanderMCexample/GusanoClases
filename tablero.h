@@ -27,4 +27,6 @@ class Tablero {
     //Métodos
 	
     void imprimirMatriz();
+
+    void generarMuros();
 };

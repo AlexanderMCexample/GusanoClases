@@ -26,4 +26,5 @@ class Obstaculo {
     void getSimbolo(char &_simbolo);
 
     void cambioDireccion(std::string &_direccion, int gusanoX, int gusanoY);
+    void direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY);
 };
