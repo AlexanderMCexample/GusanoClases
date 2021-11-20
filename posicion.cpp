@@ -19,3 +19,11 @@ void Posicion::gety(int &_y)
 {
 	_y=y;
 }
+int Posicion::getx()
+{
+	return x;
+}
+int Posicion::gety()
+{
+	return y;
+}

@@ -19,7 +19,8 @@ class Posicion {
 
     void getx(int &_x);
     void gety(int &_y);
-	
+	int getx();
+	int gety();
 	
 	//void arriba(Control &o);
 	//void abajo(Control &o);

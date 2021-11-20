@@ -2,8 +2,8 @@ class Tablero {
     //Atributos
     public:
     int world_Mapa[10][10];
+    Comida comida;
     
-
     //Constructor
     Tablero (int _sizeX=0, int _sizeY=0)
     {
@@ -14,6 +14,7 @@ class Tablero {
                 world_Mapa[row][col] = 0;
             }
         }
+        comida=Comida(3,3);
     }
 
     //Destructor
@@ -21,6 +22,6 @@ class Tablero {
     }
     
     //Métodos
-
+	
     void imprimirMatriz();
 };
