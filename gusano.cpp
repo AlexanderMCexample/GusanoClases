@@ -19,7 +19,7 @@ void Gusano::crecer()
 }
 void Gusano::reducir()
 {
-    if(tamanoGusano > 0) //para que no elimine la cabeza
+    if(tamanoGusano > 1) //para que no elimine la cabeza
     {
         //pos[tamanoGusano].setx(0);
         //pos[tamanoGusano].sety(0);

@@ -36,6 +36,7 @@ class Tablero {
             }
         }
         comida=Comida(3,3);
+        poder=Poder(7,7);
 
         gusano = new Gusano[2];
         gusano[0] = Gusano(size,4,4,'&');
@@ -78,6 +79,7 @@ class Tablero {
     void buscarObstaculo();
 
     void crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size);
+    void reducirGusano(int *listaVaciaX, int *listaVaciaY, int _size);
     void lugaresVacios();
     void posicionesCuerpo1();
     void posicionesCuerpo2();

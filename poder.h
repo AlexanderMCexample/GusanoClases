@@ -9,16 +9,13 @@ class Poder {
     int poder_x;
     int poder_y;
     char simbolo;
-    int fila;
-    int columna;
-
     //Constructos
-    Poder() //El constructor nos da valores iniciales para todos nuestro atributos
+    Poder(int poder_x =0, int poder_y=0, char simbolo='P') //El constructor nos da valores iniciales para todos nuestro atributos
     {
     senal = 0;
-    simbolo = 'P'; //Nuestro poder tiene el simbolo P, el cual sera el que se imprima en el tablero
-    fila = 10;
-    columna = 10;
+    contador=0;
+    pos = Posicion(poder_x,poder_y);
+    this -> simbolo = simbolo; 
     }
     //Destructor
     ~Poder() //Destructor de nuestra clase
@@ -27,8 +24,18 @@ class Poder {
 
 
     //Métodos
-    void Generarpoder(); 
-    void Comprobarsenal();
+    
+    void setSimbolo(char _simbolo);
+    void setPosX(int _x);
+    void setPosY(int _y);
+    
+    void getPosX(int &_x);
+    void getPosY(int &_y);
+    int getPosX();
+    int getPosY();
+    
+    void Generarpoder(int *listaVaciaX, int *listaVaciaY, int size); 
+    //void Comprobarsenal();
     char getSimbolo();
     
 };
