@@ -1,3 +1,9 @@
+//Clase Gusano
+//Esta clase se encarga de todas las caracteristicas de nuestro gusano. Movimiento, posición, tamaño, choque
+//Clases incluidas en esta: Clase Posicion; Clase Control, controlUno, controlDos, movimientoConstante, getSimbolo; getCabezaPosY; setCabezaPosY; getCabezaPosX; setCabezaPosX; getTamanioCuerpo; getCuerpo
+//Métodos creados: 
+//crecer; reducir; setControlUno; setControlDos;
+
 class Gusano {
 
     public:

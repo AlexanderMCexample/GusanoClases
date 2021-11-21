@@ -1,3 +1,8 @@
+//Clase Obstaculo
+//Esta clase se encarga de los obstaculos que los gusanos deben evitar. Tanto los bordes del tablero, cómo los que se generan tras el choque de dos gusanos.
+//Métodos creados: 
+//getSimbolo; getPosY; getPosX; setPosY; setPosX; setSimbolo
+
 class Obstaculo {
     //Atributos
     public:

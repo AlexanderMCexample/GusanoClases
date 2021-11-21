@@ -28,12 +28,12 @@ int Posicion::gety() //Return de la posición Y
 	return y;
 }
 
-void Posicion::incrementarX(int _x)
+void Posicion::incrementarX(int _x) //aumentar o disminuir el valor la coordenada x
 {
 	x+=_x;
 }
 
-void Posicion::incrementarY(int _y)
+void Posicion::incrementarY(int _y) //aumentar o disminuir el valor la coordenada y
 {
 	y+=_y;
 }

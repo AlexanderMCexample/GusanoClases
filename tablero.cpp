@@ -7,9 +7,9 @@ using namespace std;
 
 void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestro tablero de juego. Todos y cada uno de los elementos
 {
-	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
-    world_Mapa[poder.getPosX()][poder.getPosY()] = 2;
-    world_Mapa[obs.getPosX()][obs.getPosY()] = 3;
+	world_Mapa[comida.getPosX()][comida.getPosY()]=1; //actualiza la posición de la comida actual
+    world_Mapa[poder.getPosX()][poder.getPosY()] = 2; //actualiza la posición de la comida actual
+    world_Mapa[obs.getPosX()][obs.getPosY()] = 3; //actualiza la posición de la comida actual
     
     for (int row = 0; row < size; row++)
     {
@@ -44,7 +44,7 @@ void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestr
     }
 }
 
-void Tablero::generarMuros()
+void Tablero::generarMuros() //genera los muros del tablero como obstaculos para que el gusano rebote
 {
     for (int i = 0; i < size; i++)
     {
@@ -55,20 +55,20 @@ void Tablero::generarMuros()
     }
 }
 
-void Tablero::setControlGusanoUno()
+void Tablero::setControlGusanoUno() //selecciona las teclas del control 1
 {
     gusano[0].setControlUno();
 }
-void Tablero::setControlGusanoDos()
+void Tablero::setControlGusanoDos() //selecciona las teclas del control 2
 {
     gusano[1].setControlDos();
 }
 
-void Tablero::mandoGusanoUno()
+void Tablero::mandoGusanoUno() // Para captar las teclas del gusano 1 
 {
     gusano[0].controlUno();
 }   
-void Tablero::mandoGusanoDos()
+void Tablero::mandoGusanoDos() // Para captar las teclas del gusano 2
 {
     gusano[1].controlDos();
 }
@@ -80,48 +80,48 @@ void Tablero::movimientoGusano()
     world_Mapa[gusanoX1][gusanoY1]=0; //posición anterior = 0
     world_Mapa[gusanoX2][gusanoY2]=0;
 
-    gusano[0].movimientoConstante(); //movimiento constante de la serpiente
+    gusano[0].movimientoConstante(); //movimiento siguiente del gusano
     gusano[1].movimientoConstante();
 
     setPosicionesCabeza1(); //actualiza la posición actual
     setPosicionesCabeza2();
 
-    world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición para la impreción
+    world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición en la matriz para la impreción
     world_Mapa[gusanoX2][gusanoY2]=6;
 
-    posicionesCuerpo1(); //cuerpo cambie de lugar
+    posicionesCuerpo1(); //para que el cuerpo pueda moverse y cambie de posición en la matriz
     posicionesCuerpo2();
 }
 void Tablero::buscarObstaculo()
 {
     //CAMBIAR DIRECCION AL CHOCAR CON 3 = OBSTACULO
     //============
-    std::string direccionGusano1 = gusano[0].control.getDireccion(); //obtiene ña dirección actual
+    std::string direccionGusano1 = gusano[0].control.getDireccion(); //obtiene la dirección actual
     std::string direccionGusano2 = gusano[1].control.getDireccion();
 
-    cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1,choque1); //busca si su proximo movimiento hay un obstáculo
-    cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2,choque2); //Y busca un lugar vacío para cambiar de ubicación
+    cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1,choque1); //busca si su proximo movimiento hay un obstáculo Y busca un lugar vacío para cambiar de ubicación
+    cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2,choque2);
     
-    gusano[0].control.setDireccion(direccionGusano1);//cambia la tecla y dirección según la dirección de cambio de obstaculo
+    gusano[0].control.setDireccion(direccionGusano1);//cambia la tecla y dirección según la dirección de cambio de obstaculo o de la dirección actual
     gusano[1].control.setDireccion(direccionGusano2);
 }
 
-void Tablero::imprimirRegistro()
+void Tablero::imprimirRegistro() //imprime los registros de cada gusano
 {
-    cout << "||[q]     ==> si desea reiniciar||\n\n";
+    cout << "-= [q]  ==> si desea reiniciar =-\n\n";
     cout << "Gusano1 "<< choque1 << " - Gusano2 "<< choque2 <<endl;
     cout << "Vidas: "<<vidas<<endl;
     cout << "X1: "<<gusanoX1<<" - Y1: "<<gusanoY1<<endl;
     cout << "X2: "<<gusanoX2<<" - Y2: "<<gusanoY2<<endl;
-    choque1="      ";choque2="      ";
+    choque1="      ";choque2="      "; // la proxima impresión ya no saldrá el mensaje
 }
 
 void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY, std::string &choque)
-{
-    if (3 <= world_Mapa[gusanoX-1][gusanoY] && _direccion == "ARRIBA")//obtener valores de gusano 
+{// encuentra si un gusano choca con un muro o con otro gusano o el mismo
+    if (3 <= world_Mapa[gusanoX-1][gusanoY] && _direccion == "ARRIBA")
     {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
-        if (world_Mapa[gusanoX-1][gusanoY]>4 && world_Mapa[gusanoX-1][gusanoY]<7) //crear un obstaculo si hay colisión con una serpiente
+        direccionDisponible(_direccion,gusanoX,gusanoY); //encuentra un lugar vacío para cambiar a esa dirección
+        if (world_Mapa[gusanoX-1][gusanoY]>4 && world_Mapa[gusanoX-1][gusanoY]<7) //si hay colisión con una serpiente crear un obstaculo 
         {
             obs.setPosX(gusanoX-1);
             obs.setPosY(gusanoY);
@@ -131,7 +131,7 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
     } 
     else if (3 <= world_Mapa[gusanoX+1][gusanoY] && _direccion == "ABAJO")
     {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
+        direccionDisponible(_direccion,gusanoX,gusanoY);//encuentra un lugar vacío para cambiar a esa dirección
         if (world_Mapa[gusanoX+1][gusanoY]>4 && world_Mapa[gusanoX+1][gusanoY]<7)//crear un obstaculo si hay colisión con una serpiente
         {
             obs.setPosX(gusanoX+1);
@@ -142,7 +142,7 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
     } 
     else if (3 <= world_Mapa[gusanoX][gusanoY+1] && _direccion == "DERECHA")
     {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
+        direccionDisponible(_direccion,gusanoX,gusanoY);//encuentra un lugar vacío para cambiar a esa dirección
         if (world_Mapa[gusanoX][gusanoY+1]>4 && world_Mapa[gusanoX][gusanoY+1]<7)//crear un obstaculo si hay colisión con una serpiente
         {
             obs.setPosX(gusanoX);
@@ -153,7 +153,7 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
     }
     else if (3 <= world_Mapa[gusanoX][gusanoY-1] && _direccion == "IZQUIERDA")
     {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
+        direccionDisponible(_direccion,gusanoX,gusanoY);//encuentra un lugar vacío para cambiar a esa dirección
         if (world_Mapa[gusanoX][gusanoY-1]>4 && world_Mapa[gusanoX][gusanoY-1]<7)//crear un obstaculo si hay colisión con una serpiente
         {
             obs.setPosX(gusanoX);
@@ -162,8 +162,9 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
             vidas--;
         }
     }
-    if (gusanoX1==gusanoX2 && gusanoY1==gusanoY2)
+    if (gusanoX1==gusanoX2 && gusanoY1==gusanoY2) //si los gusanos estas en el mismo lugar se crea el obstáculo
     {
+        direccionDisponible(_direccion,gusanoX,gusanoY);
         obs.setPosX(gusanoX);
         obs.setPosY(gusanoY);
         choque  = "Choque";
@@ -195,14 +196,14 @@ void Tablero::direccionDisponible(std::string &_direccion, int gusanoX, int gusa
     }
 }
 
-void Tablero::setPosicionesCabeza1()
+void Tablero::setPosicionesCabeza1() //actualiza la nueva posición de la cabeza gusano 1
 {
     gusanoX1 = gusano[0].getCabezaPosX();
     gusanoY1 = gusano[0].getCabezaPosY();
     cuerpoX1[0] = gusanoX1;
     cuerpoY1[0] = gusanoY1;
 }
-void Tablero::setPosicionesCabeza2()
+void Tablero::setPosicionesCabeza2() //actualiza la nueva posición de la cabeza gusano 2
 {
     gusanoX2 = gusano[1].getCabezaPosX();
     gusanoY2 = gusano[1].getCabezaPosY();
@@ -212,12 +213,12 @@ void Tablero::setPosicionesCabeza2()
 
 
 void Tablero::crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size)
-{
+{//hacer crecer el gusano y crear una nueva comida con las listas que contienen los lugares vacíos
     int _Tamanocuerpo=0;
     if (gusanoX1 == comida.getPosX() && gusanoY1 == comida.getPosY())
     {
         gusano[0].crecer(); //coloca el nuevo x,y del cuerpo
-        _Tamanocuerpo = gusano[0].getTamanioCuerpo();
+        _Tamanocuerpo = gusano[0].getTamanioCuerpo(); //consigue el tamaño actual del gusano 1
         cuerpoX1[_Tamanocuerpo] = cuerpoX1[_Tamanocuerpo-1];//aumentar el cuerpo
         cuerpoY1[_Tamanocuerpo] = cuerpoY1[_Tamanocuerpo-1];
 
@@ -225,8 +226,8 @@ void Tablero::crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size)
     }
     else if (gusanoX2 == comida.getPosX() && gusanoY2 == comida.getPosY())
     {
-        gusano[1].crecer();
-        _Tamanocuerpo = gusano[1].getTamanioCuerpo();
+        gusano[1].crecer();//coloca el nuevo x,y del cuerpo
+        _Tamanocuerpo = gusano[1].getTamanioCuerpo(); //consigue el tamaño actual del gusano 2
         cuerpoX2[_Tamanocuerpo] = cuerpoX2[_Tamanocuerpo-1];//aumentar el cuerpo
         cuerpoY2[_Tamanocuerpo] = cuerpoY2[_Tamanocuerpo-1];
 
@@ -235,26 +236,26 @@ void Tablero::crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size)
 }
 
 void Tablero::reducirGusano(int *listaVaciaX, int *listaVaciaY, int _size)
-{
+{ //reduce el gusano  y crea el nuevo poder después de unas impresiones
     int _Tamanocuerpo=0;
     if (gusanoX1 == poder.getPosX() && gusanoY1 == poder.getPosY())
     {
-        _Tamanocuerpo = gusano[0].getTamanioCuerpo();
-        world_Mapa[cuerpoX1[_Tamanocuerpo]][cuerpoY1[_Tamanocuerpo]]=0;
-        gusano[0].reducir();
-        poder.activarSenial();
+        _Tamanocuerpo = gusano[0].getTamanioCuerpo();  //consigue el tamaño actual del gusano 1
+        world_Mapa[cuerpoX1[_Tamanocuerpo]][cuerpoY1[_Tamanocuerpo]]=0; //colocar en 0 la última ubicación del gusano
+        gusano[0].reducir(); // reducir el tamaño del gusano
+        poder.activarSenial(); // activa la señal para activar el conteo de la aparición del nuevo poder
     }
     else if (gusanoX2 == poder.getPosX() && gusanoY2 == poder.getPosY())
     {
-        _Tamanocuerpo = gusano[0].getTamanioCuerpo();
-        world_Mapa[cuerpoX1[_Tamanocuerpo]][cuerpoY1[_Tamanocuerpo]]=0;
-        gusano[1].reducir();
-        poder.activarSenial();
+        _Tamanocuerpo = gusano[1].getTamanioCuerpo(); //consigue el tamaño actual del gusano 2
+        world_Mapa[cuerpoX2[_Tamanocuerpo]][cuerpoY2[_Tamanocuerpo]]=0; //colocar en 0 la última ubicación del gusano
+        gusano[1].reducir(); // reducir el tamaño del gusano
+        poder.activarSenial(); // activa la señal para activar el conteo de la aparición del nuevo poder
     }
-    poder.Generarpoder(listaVaciaX, listaVaciaY, _size);
+    poder.Generarpoder(listaVaciaX, listaVaciaY, _size); //generar el poder según las listas con los lugares vacíos
 }
 
-void Tablero::lugaresVacios()
+void Tablero::lugaresVacios() //Actualiza los lugares vacíos para poder generar el nuevo poder o comida
 {
     int vaciosX=0,vaciosY=0,i=0;
     for (int row = 0; row < size; row++) //creo el tamaño de la lista de lugares vacios
@@ -286,15 +287,15 @@ void Tablero::lugaresVacios()
     }
 
     //MÉTODOS que tendran parámetros de lugares vacíos para colocarse
-    crecerGusano(listaVaciaX, listaVaciaY, vaciosX);
-    reducirGusano(listaVaciaX, listaVaciaY, vaciosX);
+    crecerGusano(listaVaciaX, listaVaciaY, vaciosX); //condicionales para crecer el gusano si se como la comida y crear la nueva comida
+    reducirGusano(listaVaciaX, listaVaciaY, vaciosX); //condicionales para reducir el gusano si se como el poder y crear el nuevo poder
 
     delete[] listaVaciaX;
     delete[] listaVaciaY;
 
 }
 
-void Tablero::posicionesCuerpo1()
+void Tablero::posicionesCuerpo1() //actualiza las nuevas posiciones del cuerpo en la matriz
 {
     int _tamanioCuerpo1 = gusano[0].getTamanioCuerpo();
     if (_tamanioCuerpo1>0)
@@ -308,7 +309,7 @@ void Tablero::posicionesCuerpo1()
         }
     }
 }
-void Tablero::posicionesCuerpo2()
+void Tablero::posicionesCuerpo2() //actualiza las nuevas posiciones del cuerpo en la matriz
 {
     int _tamanioCuerpo2 = gusano[1].getTamanioCuerpo();
     if (_tamanioCuerpo2>0)

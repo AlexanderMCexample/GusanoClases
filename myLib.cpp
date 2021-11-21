@@ -11,9 +11,13 @@
 #include "poder.cpp"
 #include "tablero.cpp"
 
+//Este archivos contiene funciones que llamaremos en nuestro main para ejecutar nuestro juego.
+//Las funciones llaman a todas las clases necesarias.
+//Optamos por crear este tipo  de archivos para tener un mejor manejo de todas nuestras clases y mejor organización en nuestro archivo main
+
 using namespace std;
 
-void variables_rango(int &n, int mayor, int menor) 
+void variables_rango(int &n, int mayor, int menor) //Funcion con la cual el jugador podra determinar el tamaño del tablero en el cual desea jugar. Dentro de un rango anteriormente establecido.
 {
   cout << "\n  Ingrerse el valor entre " << menor  << " y "<< mayor<<": ";
   cin >> n;
@@ -37,7 +41,7 @@ void variables_rango(int &n, int mayor, int menor)
   return;
 }
 
-void tablero()
+void tablero() //Función que, despues de establecer el tamaño del tablero, llama a todas las clases necesarias y comienza el juego.
 {
     bool game = true,menu = true;
     while(menu)
@@ -96,7 +100,7 @@ void tablero()
                 game = false;
                 break;
             }
-            else if (tecla == 101 || tecla == 69) //reiniciar el jeugo
+            else if (tecla == 101 || tecla == 69) //reiniciar el juego
             {
                 delete tabla;
                 game = false;

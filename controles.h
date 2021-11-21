@@ -1,3 +1,8 @@
+//Clase Control
+//Esta clase es la encargada del movimiento de nuestro gusano, más que la posición a DONDE se va a mover.
+//Para cumplir su objetivo hemos creado una serie de métodos: 
+//setArriba; setAbajo; setIzquerida; setDerecha; setTeclaPresionada; setDireccion; getTeclaPresionada; getDireccion; defautControlUno; defautControlDos; interaccionControlUno; interaccionControlDos; mando1, mando2
+
 class Control {
     //Atributos
     public:
