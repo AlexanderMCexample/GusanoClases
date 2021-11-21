@@ -76,7 +76,7 @@ void Tablero::mandoGusanoDos()
 }
 void Tablero::movimientoGusano()
 {
-    setPosicionesCabeza1();
+    setPosicionesCabeza1(); //actualiza la posición anterior
     setPosicionesCabeza2();
 
     world_Mapa[gusanoX1][gusanoY1]=0; //posición anterior = 0
@@ -85,28 +85,27 @@ void Tablero::movimientoGusano()
     gusano[0].movimientoConstante(); //movimiento constante de la serpiente
     gusano[1].movimientoConstante();
 
-    setPosicionesCabeza1();
+    setPosicionesCabeza1(); //actualiza la posición actual
     setPosicionesCabeza2();
 
-    world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición
+    world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición para la impreción
     world_Mapa[gusanoX2][gusanoY2]=6;
 }
 void Tablero::buscarObstaculo()
 {
     //CAMBIAR DIRECCION AL CHOCAR CON 3 = OBSTACULO
     //============
-    std::string direccionGusano1 = gusano[0].control.getDireccion();
+    std::string direccionGusano1 = gusano[0].control.getDireccion(); //obtiene ña dirección actual
     std::string direccionGusano2 = gusano[1].control.getDireccion();
 
-    cout << direccionGusano1<<endl;
+    cout << "Gusano1 "<<direccionGusano1 << "Gusano2 "<< direccionGusano2 <<endl;
     cout << "X1 "<<gusanoX1<<" Y1 "<<gusanoY1<<endl;
     cout << "X2 "<<gusanoX2<<" Y2 "<<gusanoY2<<endl;
 
-    cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1);
-    cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2);
-    //============
+    cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1); //busca si su proximo movimiento hay un obstáculo
+    cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2); //Y busca un lugar vacío para cambiar de ubicación
     
-    gusano[0].control.setDireccion(direccionGusano1);
+    gusano[0].control.setDireccion(direccionGusano1);//cambia la tecla y dirección según la dirección de cambio de obstaculo
     gusano[1].control.setDireccion(direccionGusano2);
 }
 

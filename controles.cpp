@@ -114,6 +114,7 @@ void Control::setDireccion(std::string _direccion) //para saber a que dirección
     {
         teclaPresionada = izquierda;
     }
+    direccion = _direccion;
 }
     
 void Control::getDireccion(std::string &_direccion)
