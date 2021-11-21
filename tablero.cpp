@@ -92,7 +92,7 @@ void Tablero::movimientoGusano()
     world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición para la impreción
     world_Mapa[gusanoX2][gusanoY2]=6;
 
-    posicionesCuerpo1();
+    posicionesCuerpo1(); //cuerpo cambie de lugar
     posicionesCuerpo2();
 }
 void Tablero::buscarObstaculo()
@@ -102,9 +102,9 @@ void Tablero::buscarObstaculo()
     std::string direccionGusano1 = gusano[0].control.getDireccion(); //obtiene ña dirección actual
     std::string direccionGusano2 = gusano[1].control.getDireccion();
 
-    cout << "Gusano1 "<<direccionGusano1 << "Gusano2 "<< direccionGusano2 <<endl;
-    cout << "X1 "<<gusanoX1<<" Y1 "<<gusanoY1<<endl;
-    cout << "X2 "<<gusanoX2<<" Y2 "<<gusanoY2<<endl;
+    cout << "Gusano1 "<<direccionGusano1 << " - Gusano2 "<< direccionGusano2 <<endl;
+    cout << "X1: "<<gusanoX1<<" - Y1: "<<gusanoY1<<endl;
+    cout << "X2: "<<gusanoX2<<" - Y2: "<<gusanoY2<<endl;
 
     cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1); //busca si su proximo movimiento hay un obstáculo
     cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2); //Y busca un lugar vacío para cambiar de ubicación
@@ -151,7 +151,7 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
             obs.setPosY(gusanoY-1);
         }
     }
-    if (gusanoX1==gusanoY1 && gusanoY1==gusanoY2)
+    if (gusanoX1==gusanoX2 && gusanoY1==gusanoY2)
     {
         obs.setPosX(gusanoX);
         obs.setPosY(gusanoY-1);
