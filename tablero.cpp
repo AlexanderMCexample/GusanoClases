@@ -125,8 +125,8 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX-1);
             obs.setPosY(gusanoY);
+            disminuirVida();
             choque  = "Choque";
-            vidas--;
         }
     } 
     else if (3 <= world_Mapa[gusanoX+1][gusanoY] && _direccion == "ABAJO")
@@ -136,8 +136,8 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX+1);
             obs.setPosY(gusanoY);
+            disminuirVida();
             choque  = "Choque";
-            vidas--;
         }
     } 
     else if (3 <= world_Mapa[gusanoX][gusanoY+1] && _direccion == "DERECHA")
@@ -147,8 +147,8 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX);
             obs.setPosY(gusanoY+1);
+            disminuirVida();
             choque  = "Choque";
-            vidas--;
         }
     }
     else if (3 <= world_Mapa[gusanoX][gusanoY-1] && _direccion == "IZQUIERDA")
@@ -158,22 +158,25 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX);
             obs.setPosY(gusanoY-1);
+            disminuirVida();
             choque  = "Choque";
-            vidas--;
         }
     }
     if (gusanoX1==gusanoX2 && gusanoY1==gusanoY2) //si los gusanos estas en el mismo lugar se crea el obstáculo
     {
-        //direccionDisponible(_direccion,gusanoX,gusanoY);
         obs.setPosX(gusanoX);
         obs.setPosY(gusanoY);
         
-        if (choque1 != "Choque" && choque2 != "Choque")
-        {
-            vidas--;
-        }
+        disminuirVida();
         choque  = "Choque";
         
+    }
+}
+void Tablero::disminuirVida()
+{
+    if (choque1 != "Choque" && choque2 != "Choque") //para evitar que se reduzca la vida más de una vez
+    {
+        vidas--;
     }
 }
 

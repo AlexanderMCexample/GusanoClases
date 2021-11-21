@@ -89,4 +89,5 @@ class Tablero {
     int getVidas();
     void imprimirRegistro();
     void perderJuego(bool &_game);
+    void disminuirVida();
 };
