@@ -10,6 +10,7 @@ using namespace std;
 void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestro tablero de juego. Todos y cada uno de los elementos
 {
 	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
+    world_Mapa[obs.getPosX()][obs.getPosY()]=3;
     world_Mapa[2][2] = 2;
 
     for (int row = 0; row < size; row++)
@@ -114,18 +115,43 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
     if (3 <= world_Mapa[gusanoX-1][gusanoY] && _direccion == "ARRIBA")//obtener valores de gusano 
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
+        if (world_Mapa[gusanoX-1][gusanoY]>4 && world_Mapa[gusanoX-1][gusanoY]<7) //crear un obstaculo si hay colisión con una serpiente
+        {
+            obs.setPosX(gusanoX-1);
+            obs.setPosY(gusanoY);
+        }
     } 
     else if (3 <= world_Mapa[gusanoX+1][gusanoY] && _direccion == "ABAJO")
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
+        if (world_Mapa[gusanoX+1][gusanoY]>4 && world_Mapa[gusanoX+1][gusanoY]<7)//crear un obstaculo si hay colisión con una serpiente
+        {
+            obs.setPosX(gusanoX+1);
+            obs.setPosY(gusanoY);
+        }
     } 
     else if (3 <= world_Mapa[gusanoX][gusanoY+1] && _direccion == "DERECHA")
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
+        if (world_Mapa[gusanoX][gusanoY+1]>4 && world_Mapa[gusanoX][gusanoY+1]<7)//crear un obstaculo si hay colisión con una serpiente
+        {
+            obs.setPosX(gusanoX);
+            obs.setPosY(gusanoY+1);
+        }
     }
     else if (3 <= world_Mapa[gusanoX][gusanoY-1] && _direccion == "IZQUIERDA")
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
+        if (world_Mapa[gusanoX][gusanoY-1]>4 && world_Mapa[gusanoX][gusanoY-1]<7)//crear un obstaculo si hay colisión con una serpiente
+        {
+            obs.setPosX(gusanoX);
+            obs.setPosY(gusanoY-1);
+        }
+    }
+    if (gusanoX1==gusanoY1 && gusanoY1==gusanoY2)
+    {
+        obs.setPosX(gusanoX);
+        obs.setPosY(gusanoY-1);
     }
 }
 

@@ -23,6 +23,8 @@ class Obstaculo {
     
     void getPosX(int &_x);
     void getPosY(int &_y);
+    int getPosX();
+    int getPosY();
     void getSimbolo(char &_simbolo);
     char getSimbolo();
     

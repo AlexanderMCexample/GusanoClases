@@ -38,3 +38,12 @@ char Obstaculo::getSimbolo()
     return simbolo;
 }
 
+int Obstaculo::getPosX()
+{
+    return pos.getx();
+}
+int Obstaculo::getPosY()
+{
+    return pos.gety();
+}
+
