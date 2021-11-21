@@ -82,7 +82,8 @@ void tablero() //Función que, despues de establecer el tamaño del tablero, lla
             {
                 tabla->buscarObstaculo();
                 tabla->lugaresVacios();
-                tabla->imprimirRegistro();        
+                tabla->imprimirRegistro();
+                tabla->perderJuego(game);        
             }
         }
         

@@ -47,7 +47,7 @@ void Poder::Generarpoder(int *listaVaciaX, int *listaVaciaY, int size) //Este m√
 
 }
 
-void Poder::activarSenial()
+void Poder::activarSenial() //Activa el aumento de la velocidad del juego y el contador para crear el nuevo poder
 {
     if (senal == 0)
     {

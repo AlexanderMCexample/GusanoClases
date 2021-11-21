@@ -88,4 +88,5 @@ class Tablero {
     void posicionesCuerpo2();
     int getVidas();
     void imprimirRegistro();
+    void perderJuego(bool &_game);
 };

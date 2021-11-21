@@ -164,11 +164,16 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
     }
     if (gusanoX1==gusanoX2 && gusanoY1==gusanoY2) //si los gusanos estas en el mismo lugar se crea el obstáculo
     {
-        direccionDisponible(_direccion,gusanoX,gusanoY);
+        //direccionDisponible(_direccion,gusanoX,gusanoY);
         obs.setPosX(gusanoX);
         obs.setPosY(gusanoY);
+        
+        if (choque1 != "Choque" && choque2 != "Choque")
+        {
+            vidas--;
+        }
         choque  = "Choque";
-        vidas--;
+        
     }
 }
 
@@ -193,6 +198,7 @@ void Tablero::direccionDisponible(std::string &_direccion, int gusanoX, int gusa
     else
     { 
         _direccion = "LOSE";
+        vidas = 0; //si no hay lugar para cambiar de dirección significa perder
     }
 }
 
@@ -327,4 +333,12 @@ void Tablero::posicionesCuerpo2() //actualiza las nuevas posiciones del cuerpo e
 int Tablero::getVidas()
 {
     return vidas;
+}
+
+void Tablero::perderJuego(bool &_game) //devolver por referencia _game false si las vidas se acaban
+{
+    if (vidas == 0)
+    {
+        _game = false;
+    }
 }
