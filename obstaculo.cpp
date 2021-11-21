@@ -1,8 +1,4 @@
 #include <iostream>
-#include <conio.h> //gets() kbhit()
-#include <cstring> //strcpy strcmp
-#include <string> //string 
-
 #include "obstaculo.h"
 
 using namespace std;   

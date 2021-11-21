@@ -1,9 +1,6 @@
 #include <iostream>
-#include <conio.h> //gets() kbhit()
-#include <cstring> //strcpy strcmp
-#include <string> //string 
-//Clases
 #include "comida.h"
+
 using namespace std; 
 
 void Comida::setSimbolo(char _simbolo) //Este Método nos sirve para llamar al simbolo de nuestra comida

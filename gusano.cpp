@@ -21,8 +21,6 @@ void Gusano::reducir()
 {
     if(tamanoGusano > 1) //para que no elimine la cabeza
     {
-        //pos[tamanoGusano].setx(0);
-        //pos[tamanoGusano].sety(0);
         tamanoGusano--;
     }
 }

@@ -3,10 +3,8 @@
 class Comida {
     //Atributos
     public:
-
     Posicion pos_comida;   //LLamamos la clase Posicion
     char simbolo;
-
 
     //Constructor
     Comida(int comida_x =0, int comida_y=0,  char simbolo = '@'){ //El constructor nos da valores iniciales para todos nuestro atributos

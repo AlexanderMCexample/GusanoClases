@@ -1,6 +1,4 @@
-//Clases
 #include "poder.h"
-//
 
 void Poder::setSimbolo(char _simbolo) //Este Método nos sirve para llamar al simbolo de nuestra comida
 {
@@ -33,11 +31,11 @@ int Poder::getPosY()
 
 void Poder::Generarpoder(int *listaVaciaX, int *listaVaciaY, int size) //Este método cuenta el tiempo para que el siguiente poder sea creado
 {  
-    if (contador < size && senal==1) //dependiendo el tamaño del tablero aumetnará la velocidad del juego
+    if (contador < 10 && senal==1) //dependiendo el tamaño del tablero aumetnará la velocidad del juego
     {
         contador = contador + 1;
     }
-    else if (contador >=size)
+    else if (contador >=10)
     {
         srand(time(0)); 
         setPosX(listaVaciaX[rand()%(size-1)]);  //Se crea una posición aleatorea para x
@@ -60,16 +58,6 @@ void Poder::activarSenial()
     }
 }
 
-//void Poder::Comprobarsenal() //Este método resive la señal de nuestro método GenerarPoder
-//{
-//    srand(time(0)); 
-
-//    if (senal==1) //Se confirma que la señal fue reicibida
-//    {
-//        pos.setx(listaVaciaX[rand()%(size-1)]);  //Se crea una posición aleatorea para x
-//        pos.sety(listaVaciaX[rand()%(size-1)]);//Se crea una posición aleatorea para y
-//    }
-//}
 char Poder::getSimbolo() //Método que le servira a diferentes clases para obtener el simbolo de nuestro poder
 {
     return simbolo;
