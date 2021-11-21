@@ -39,7 +39,7 @@ void variables_rango(int &n, int mayor, int menor)
 
 void tablero()
 {
-    bool game = true,menu = true, reiniciar=true;
+    bool game = true,menu = true;
     while(menu)
     {
         int size=0;
