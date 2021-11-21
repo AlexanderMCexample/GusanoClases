@@ -10,10 +10,9 @@ using namespace std;
 void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestro tablero de juego. Todos y cada uno de los elementos
 {
 	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
-    world_Mapa[2][2] = 2;
+    world_Mapa[poder.getPosX()][poder.getPosY()] = 2;
     world_Mapa[obs.getPosX()][obs.getPosY()] = 3;
     
-
     for (int row = 0; row < size; row++)
     {
         for (int col = 0; col < size; col++)
@@ -221,6 +220,20 @@ void Tablero::crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size)
     }
 }
 
+void Tablero::reducirGusano(int *listaVaciaX, int *listaVaciaY, int _size)
+{
+    if (gusanoX1 == poder.getPosX() && gusanoY1 == poder.getPosY())
+    {
+        gusano[0].reducir();
+        poder.Generarpoder(listaVaciaX, listaVaciaY, _size);
+    }
+    else if (gusanoX2 == poder.getPosX() && gusanoY2 == poder.getPosY())
+    {
+        gusano[1].reducir();
+        poder.Generarpoder(listaVaciaX, listaVaciaY, _size);
+    }
+}
+
 void Tablero::lugaresVacios()
 {
     int vaciosX=0,vaciosY=0,i=0;
@@ -253,7 +266,8 @@ void Tablero::lugaresVacios()
     }
 
     //MÉTODOS que tendran parámetros de lugares vacíos para colocarse
-    crecerGusano(listaVaciaX, listaVaciaY, vaciosX); 
+    crecerGusano(listaVaciaX, listaVaciaY, vaciosX);
+    reducirGusano(listaVaciaX, listaVaciaY, vaciosX);
 
     delete[] listaVaciaX;
     delete[] listaVaciaY;
