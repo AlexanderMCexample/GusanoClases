@@ -35,12 +35,12 @@ class Tablero {
                 world_Mapa[row][col] = 0;
             }
         }
-        comida = Comida(3,3);
-        poder = Poder(size,5,6);
+        comida = Comida(2,2);
+        poder = Poder(size,2,size-3);
 
         gusano = new Gusano[2];
-        gusano[0] = Gusano(size,4,4,'&');
-        gusano[1] = Gusano(size,4,6,'%');
+        gusano[0] = Gusano(size,size/2,size/2-1,'&');
+        gusano[1] = Gusano(size,size/2,size/2+1,'%');
         
     }
 

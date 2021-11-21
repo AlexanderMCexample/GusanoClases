@@ -99,6 +99,7 @@ void Tablero::buscarObstaculo()
     std::string direccionGusano1 = gusano[0].control.getDireccion(); //obtiene ña dirección actual
     std::string direccionGusano2 = gusano[1].control.getDireccion();
 
+    cout << "[q]     ==> si desea reiniciar"<<endl;
     cout << "Gusano1 "<<direccionGusano1 << " - Gusano2 "<< direccionGusano2 <<endl;
     cout << "X1: "<<gusanoX1<<" - Y1: "<<gusanoY1<<endl;
     cout << "X2: "<<gusanoX2<<" - Y2: "<<gusanoY2<<endl;

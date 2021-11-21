@@ -1,5 +1,3 @@
 #include "myLib.cpp"
-
-void controles();
-void posicion();
 void tablero();
+void variables_rango(int &n, int mayor, int menor);
