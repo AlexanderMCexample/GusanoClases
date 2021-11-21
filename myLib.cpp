@@ -77,7 +77,8 @@ void tablero()
             if (game)
             {
                 tabla->buscarObstaculo();
-                tabla->lugaresVacios();        
+                tabla->lugaresVacios();
+                tabla->imprimirRegistro();        
             }
         }
         
@@ -88,7 +89,7 @@ void tablero()
         while(true)
         {
             tecla = _getch();
-            if (tecla == 32) // salir del jeugo
+            if (tecla == 32) // salir del juego
             {   
                 delete tabla;
                 menu = false;

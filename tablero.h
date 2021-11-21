@@ -11,12 +11,15 @@ class Tablero {
     int gusanoX1, gusanoY1, gusanoX2, gusanoY2;
     int **world_Mapa;
     int *cuerpoX1,*cuerpoY1,*cuerpoX2,*cuerpoY2;
+    int vidas;
+    std::string choque1,choque2;
 
     //Constructor
     Tablero(int size =10)  //El constructor nos da valores iniciales para todos nuestro atributos
     {
         this -> size =size; 
-        gusanoX1=0; gusanoY1=0; gusanoX2=0; gusanoY2=0;
+        gusanoX1=0; gusanoY1=0; gusanoX2=0; gusanoY2=0, vidas=5;
+        choque1="      ";choque2="      ";
         
         cuerpoX1 = new int[size];
         cuerpoX2 = new int[size];
@@ -74,7 +77,7 @@ class Tablero {
     void mandoGusanoUno();
     void mandoGusanoDos();
     void movimientoGusano();
-    void cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY);
+    void cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY,std::string &choque);
     void direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY);
     void buscarObstaculo();
 
@@ -83,4 +86,6 @@ class Tablero {
     void lugaresVacios();
     void posicionesCuerpo1();
     void posicionesCuerpo2();
+    int getVidas();
+    void imprimirRegistro();
 };

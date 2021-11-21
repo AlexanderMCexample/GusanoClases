@@ -99,19 +99,24 @@ void Tablero::buscarObstaculo()
     std::string direccionGusano1 = gusano[0].control.getDireccion(); //obtiene ña dirección actual
     std::string direccionGusano2 = gusano[1].control.getDireccion();
 
-    cout << "[q]     ==> si desea reiniciar"<<endl;
-    cout << "Gusano1 "<<direccionGusano1 << " - Gusano2 "<< direccionGusano2 <<endl;
-    cout << "X1: "<<gusanoX1<<" - Y1: "<<gusanoY1<<endl;
-    cout << "X2: "<<gusanoX2<<" - Y2: "<<gusanoY2<<endl;
-
-    cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1); //busca si su proximo movimiento hay un obstáculo
-    cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2); //Y busca un lugar vacío para cambiar de ubicación
+    cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1,choque1); //busca si su proximo movimiento hay un obstáculo
+    cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2,choque2); //Y busca un lugar vacío para cambiar de ubicación
     
     gusano[0].control.setDireccion(direccionGusano1);//cambia la tecla y dirección según la dirección de cambio de obstaculo
     gusano[1].control.setDireccion(direccionGusano2);
 }
 
-void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY)
+void Tablero::imprimirRegistro()
+{
+    cout << "||[q]     ==> si desea reiniciar||\n\n";
+    cout << "Gusano1 "<< choque1 << " - Gusano2 "<< choque2 <<endl;
+    cout << "Vidas: "<<vidas<<endl;
+    cout << "X1: "<<gusanoX1<<" - Y1: "<<gusanoY1<<endl;
+    cout << "X2: "<<gusanoX2<<" - Y2: "<<gusanoY2<<endl;
+    choque1="      ";choque2="      ";
+}
+
+void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY, std::string &choque)
 {
     if (3 <= world_Mapa[gusanoX-1][gusanoY] && _direccion == "ARRIBA")//obtener valores de gusano 
     {
@@ -120,6 +125,8 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX-1);
             obs.setPosY(gusanoY);
+            choque  = "Choque";
+            vidas--;
         }
     } 
     else if (3 <= world_Mapa[gusanoX+1][gusanoY] && _direccion == "ABAJO")
@@ -129,6 +136,8 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX+1);
             obs.setPosY(gusanoY);
+            choque  = "Choque";
+            vidas--;
         }
     } 
     else if (3 <= world_Mapa[gusanoX][gusanoY+1] && _direccion == "DERECHA")
@@ -138,6 +147,8 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX);
             obs.setPosY(gusanoY+1);
+            choque  = "Choque";
+            vidas--;
         }
     }
     else if (3 <= world_Mapa[gusanoX][gusanoY-1] && _direccion == "IZQUIERDA")
@@ -147,12 +158,16 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
         {
             obs.setPosX(gusanoX);
             obs.setPosY(gusanoY-1);
+            choque  = "Choque";
+            vidas--;
         }
     }
     if (gusanoX1==gusanoX2 && gusanoY1==gusanoY2)
     {
         obs.setPosX(gusanoX);
-        obs.setPosY(gusanoY-1);
+        obs.setPosY(gusanoY);
+        choque  = "Choque";
+        vidas--;
     }
 }
 
@@ -306,4 +321,9 @@ void Tablero::posicionesCuerpo2()
             world_Mapa[cuerpoX2[_tamanioCuerpo2]][cuerpoY2[_tamanioCuerpo2]]=6;
         }
     }
+}
+
+int Tablero::getVidas()
+{
+    return vidas;
 }
