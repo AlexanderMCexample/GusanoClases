@@ -9,11 +9,11 @@ using namespace std;
 
 void Gusano::crecer()
 {
-    if(tamanoGusano <= maxTamanoGusano)
+    if(tamanoGusano < maxTamanoGusano)
     {
         tamanoGusano++;
-        cuerpoX[tamanoGusano]=pos.getx();
-        cuerpoY[tamanoGusano]=pos.gety();
+        cuerpoX=pos.getx();
+        cuerpoY=pos.gety();
     }
 
 }
@@ -106,4 +106,15 @@ int Gusano::getCabezaPosY()
 {
 
     return pos.gety();
+}
+
+void Gusano::getCuerpo(int &_cuerpoX, int &_cuerpoY)
+{
+    _cuerpoX = cuerpoX;
+    _cuerpoY = cuerpoY;
+}
+
+int Gusano::getTamanioCuerpo()
+{
+    return tamanoGusano;
 }

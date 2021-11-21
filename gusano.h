@@ -8,33 +8,25 @@ class Gusano {
     int size;
     int maxTamanoGusano;
     char simbolo;
-    int *cuerpoX;
-    int *cuerpoY;
+    int cuerpoX;
+    int cuerpoY;
     std::string direccion;
 
     //Constructor
     Gusano (int size =1, int _x = 0, int _y=0,  char simbolo = '&'){ //El constructor nos da valores iniciales para todos nuestro atributos
-        tamanoGusano = -1;
+        tamanoGusano = 1;
         maxTamanoGusano = size;
         this->size = size;
         this -> simbolo = simbolo;
         pos = Posicion(_x,_y); //pos simpre es la ubicación x,y de la cabeza 
         direccion = "";
 
-        cuerpoX = new int[size]; //tamaño del cuerpo
-        cuerpoY = new int[size];
-        for (int i = 0; i < size; i++)
-        {
-            cuerpoX[i] = 0;
-            cuerpoY[i] = 0;
-        }
-        
+        cuerpoX = 0; //tamaño del cuerpo
+        cuerpoY = 0;      
     }
 
     //Destructor de nuestra Clase
     ~Gusano (){
-        delete[] cuerpoX;
-        delete[] cuerpoY;
     }
     
     //Métodos
@@ -57,5 +49,8 @@ class Gusano {
     void getCabezaPosY(int &_y); //cabeza
     int getCabezaPosX(); //cabeza
     int getCabezaPosY(); //cabeza
+
+    void getCuerpo(int &_cuerpoX, int &_cuerpoY);
+    int getTamanioCuerpo();
 
 };

@@ -45,10 +45,14 @@ void tablero()
     tabla.generarMuros();
     tabla.setControlGusanoDos();
     tabla.setControlGusanoUno();
+    
     while(true)
     {
         tabla.movimientoGusano(); //Actualiza los movimientos del gusano
         
+        //tabla.posicionesCuerpo1();
+        //tabla.posicionesCuerpo2();
+
         tabla.imprimirMatriz();
         for (double time = 0; time < 600;time+=0.05)  //tiempo para imprimir y capturar la tecla
         {
@@ -57,8 +61,7 @@ void tablero()
         }
         cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
         tabla.buscarObstaculo();
-        tabla.lugaresVacios();
-        
+        tabla.lugaresVacios();        
     }
 
 

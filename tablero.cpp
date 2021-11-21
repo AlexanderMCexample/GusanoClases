@@ -12,6 +12,7 @@ void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestr
 	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
     world_Mapa[2][2] = 2;
     world_Mapa[obs.getPosX()][obs.getPosY()] = 3;
+    
 
     for (int row = 0; row < size; row++)
     {
@@ -68,12 +69,11 @@ void Tablero::setControlGusanoDos()
 
 void Tablero::mandoGusanoUno()
 {
-        gusano[0].controlUno();
+    gusano[0].controlUno();
 }   
 void Tablero::mandoGusanoDos()
 {
-
-        gusano[1].controlDos();
+    gusano[1].controlDos();
 }
 void Tablero::movimientoGusano()
 {
@@ -91,6 +91,9 @@ void Tablero::movimientoGusano()
 
     world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición para la impreción
     world_Mapa[gusanoX2][gusanoY2]=6;
+
+    posicionesCuerpo1();
+    posicionesCuerpo2();
 }
 void Tablero::buscarObstaculo()
 {
@@ -183,25 +186,38 @@ void Tablero::setPosicionesCabeza1()
 {
     gusanoX1 = gusano[0].getCabezaPosX();
     gusanoY1 = gusano[0].getCabezaPosY();
+    cuerpoX1[0] = gusanoX1;
+    cuerpoY1[0] = gusanoY1;
 }
 void Tablero::setPosicionesCabeza2()
 {
     gusanoX2 = gusano[1].getCabezaPosX();
     gusanoY2 = gusano[1].getCabezaPosY();
+    cuerpoX2[0] = gusanoX2;
+    cuerpoY2[0] = gusanoY2;
 }   
 
 
 void Tablero::crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size)
 {
+    int _Tamanocuerpo=0;
     if (gusanoX1 == comida.getPosX() && gusanoY1 == comida.getPosY())
     {
-        gusano[0].crecer();
-        comida.generar_aleatorio(listaVaciaX, listaVaciaY, _size);
+        gusano[0].crecer(); //coloca el nuevo x,y del cuerpo
+        _Tamanocuerpo = gusano[0].getTamanioCuerpo();
+        cuerpoX1[_Tamanocuerpo] = cuerpoX1[_Tamanocuerpo-1];//aumentar el cuerpo
+        cuerpoY1[_Tamanocuerpo] = cuerpoY1[_Tamanocuerpo-1];
+
+        comida.generar_aleatorio(listaVaciaX, listaVaciaY, _size);//generar nueva comida
     }
     else if (gusanoX2 == comida.getPosX() && gusanoY2 == comida.getPosY())
     {
         gusano[1].crecer();
-        comida.generar_aleatorio(listaVaciaX, listaVaciaY, _size);
+        _Tamanocuerpo = gusano[1].getTamanioCuerpo();
+        cuerpoX2[_Tamanocuerpo] = cuerpoX2[_Tamanocuerpo-1];//aumentar el cuerpo
+        cuerpoY2[_Tamanocuerpo] = cuerpoY2[_Tamanocuerpo-1];
+
+        comida.generar_aleatorio(listaVaciaX, listaVaciaY, _size);//generar nueva comida
     }
 }
 
@@ -236,9 +252,39 @@ void Tablero::lugaresVacios()
         }
     }
 
-    //métodos que tendran parámetros de lugares vacíos para colocarse
+    //MÉTODOS que tendran parámetros de lugares vacíos para colocarse
     crecerGusano(listaVaciaX, listaVaciaY, vaciosX); 
 
     delete[] listaVaciaX;
     delete[] listaVaciaY;
+
+}
+
+void Tablero::posicionesCuerpo1()
+{
+    int _tamanioCuerpo1 = gusano[0].getTamanioCuerpo();
+    if (_tamanioCuerpo1>0)
+    {
+        world_Mapa[cuerpoX1[gusano[0].getTamanioCuerpo()]][cuerpoY1[gusano[0].getTamanioCuerpo()]]=0;
+        for (_tamanioCuerpo1; _tamanioCuerpo1 > 0; _tamanioCuerpo1--)
+        {
+            cuerpoX1[_tamanioCuerpo1]=cuerpoX1[_tamanioCuerpo1-1];
+            cuerpoY1[_tamanioCuerpo1]=cuerpoY1[_tamanioCuerpo1-1];
+            world_Mapa[cuerpoX1[_tamanioCuerpo1]][cuerpoY1[_tamanioCuerpo1]]=5;
+        }
+    }
+}
+void Tablero::posicionesCuerpo2()
+{
+    int _tamanioCuerpo2 = gusano[1].getTamanioCuerpo();
+    if (_tamanioCuerpo2>0)
+    {
+        world_Mapa[cuerpoX2[gusano[1].getTamanioCuerpo()]][cuerpoY2[gusano[1].getTamanioCuerpo()]]=0;
+        for (_tamanioCuerpo2; _tamanioCuerpo2 > 0; _tamanioCuerpo2--)
+        {
+            cuerpoX2[_tamanioCuerpo2]=cuerpoX2[_tamanioCuerpo2-1];
+            cuerpoY2[_tamanioCuerpo2]=cuerpoY2[_tamanioCuerpo2-1];
+            world_Mapa[cuerpoX2[_tamanioCuerpo2]][cuerpoY2[_tamanioCuerpo2]]=6;
+        }
+    }
 }
