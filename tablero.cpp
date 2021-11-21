@@ -228,15 +228,16 @@ void Tablero::reducirGusano(int *listaVaciaX, int *listaVaciaY, int _size)
         _Tamanocuerpo = gusano[0].getTamanioCuerpo();
         world_Mapa[cuerpoX1[_Tamanocuerpo]][cuerpoY1[_Tamanocuerpo]]=0;
         gusano[0].reducir();
-        poder.Generarpoder(listaVaciaX, listaVaciaY, _size);
+        poder.activarSenial();
     }
     else if (gusanoX2 == poder.getPosX() && gusanoY2 == poder.getPosY())
     {
         _Tamanocuerpo = gusano[0].getTamanioCuerpo();
         world_Mapa[cuerpoX1[_Tamanocuerpo]][cuerpoY1[_Tamanocuerpo]]=0;
         gusano[1].reducir();
-        poder.Generarpoder(listaVaciaX, listaVaciaY, _size);
+        poder.activarSenial();
     }
+    poder.Generarpoder(listaVaciaX, listaVaciaY, _size);
 }
 
 void Tablero::lugaresVacios()

@@ -54,7 +54,7 @@ void tablero()
         //tabla.posicionesCuerpo2();
 
         tabla.imprimirMatriz();
-        for (double time = 0; time < 600;time+=0.05)  //tiempo para imprimir y capturar la tecla
+        for (double time = 0; time < 600-tabla.poder.getVelocidadJuego();time+=0.05)  //tiempo para imprimir y capturar la tecla
         {
             tabla.mandoGusanoUno();
             tabla.mandoGusanoDos();

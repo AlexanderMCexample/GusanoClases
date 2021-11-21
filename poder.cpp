@@ -32,23 +32,32 @@ int Poder::getPosY()
 }
 
 void Poder::Generarpoder(int *listaVaciaX, int *listaVaciaY, int size) //Este método cuenta el tiempo para que el siguiente poder sea creado
-{
-    srand(time(0)); 
-  
-//    if (contador < 10)
-//    {
-//        contador = contador + 1;
-//    }
-//    if (contador >=10)
-//    {
-//        senal=1; //Tras cierto tiempo se envia la señal que el poder esta listo para ser creado
-//    }
-//    if (senal==1) //Se confirma que la señal fue reicibida
-//    {
-    setPosX(listaVaciaX[rand()%(size-1)]);  //Se crea una posición aleatorea para x
-    setPosY(listaVaciaX[rand()%(size-1)]);//Se crea una posición aleatorea para y
-//    }
+{  
+    if (contador < size && senal==1) //dependiendo el tamaño del tablero aumetnará la velocidad del juego
+    {
+        contador = contador + 1;
+    }
+    else if (contador >=size)
+    {
+        srand(time(0)); 
+        setPosX(listaVaciaX[rand()%(size-1)]);  //Se crea una posición aleatorea para x
+        setPosY(listaVaciaX[rand()%(size-1)]);//Se crea una posición aleatorea para y
+        contador =0;
+        senal=0;
+        velocidad_juego = 0;
+    }
 
+}
+
+void Poder::activarSenial()
+{
+    if (senal == 0)
+    {
+        velocidad_juego = 300;
+        setPosX(0);
+        setPosY(0);
+        senal = 1;
+    }
 }
 
 //void Poder::Comprobarsenal() //Este método resive la señal de nuestro método GenerarPoder
@@ -64,4 +73,9 @@ void Poder::Generarpoder(int *listaVaciaX, int *listaVaciaY, int size) //Este m�
 char Poder::getSimbolo() //Método que le servira a diferentes clases para obtener el simbolo de nuestro poder
 {
     return simbolo;
+}
+
+int Poder::getVelocidadJuego()
+{
+    return velocidad_juego;
 }
