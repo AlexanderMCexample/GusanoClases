@@ -12,8 +12,8 @@ void Gusano::crecer()
     if(tamanoGusano <= maxTamanoGusano)
     {
         tamanoGusano++;
-        //pos[tamanoGusano].setx(pos[tamanoGusano-1].getx());
-        //pos[tamanoGusano].sety(pos[tamanoGusano-1].gety());
+        cuerpoX[tamanoGusano]=pos.getx();
+        cuerpoY[tamanoGusano]=pos.gety();
     }
 
 }
@@ -26,14 +26,7 @@ void Gusano::reducir()
         tamanoGusano--;
     }
 }
-void Gusano::rebotar(std::string _direccion)
-{
-    direccion =_direccion;
-}
-void Gusano::perder()
-{
 
-}
 void Gusano::setControlUno()
 {
     control.defautControlUno();

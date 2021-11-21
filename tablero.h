@@ -63,4 +63,6 @@ class Tablero {
     void cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY);
     void direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY);
     void buscarObstaculo();
+
+    void crecerGusano();
 };
