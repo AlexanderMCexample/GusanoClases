@@ -57,6 +57,7 @@ void tablero()
         }
         cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
         tabla.buscarObstaculo();
+        tabla.lugaresVacios();
         
     }
 

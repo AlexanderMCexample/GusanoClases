@@ -11,7 +11,7 @@ void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestr
 {
 	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
     world_Mapa[2][2] = 2;
-    world_Mapa[obs.getPosX()][obs.getPosY()]=3;
+    world_Mapa[obs.getPosX()][obs.getPosY()] = 3;
 
     for (int row = 0; row < size; row++)
     {
@@ -191,11 +191,54 @@ void Tablero::setPosicionesCabeza2()
 }   
 
 
-void Tablero::crecerGusano()
+void Tablero::crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size)
 {
     if (gusanoX1 == comida.getPosX() && gusanoY1 == comida.getPosY())
     {
         gusano[0].crecer();
-        comida.generar_aleatorio(size);
+        comida.generar_aleatorio(listaVaciaX, listaVaciaY, _size);
     }
+    else if (gusanoX2 == comida.getPosX() && gusanoY2 == comida.getPosY())
+    {
+        gusano[1].crecer();
+        comida.generar_aleatorio(listaVaciaX, listaVaciaY, _size);
+    }
+}
+
+void Tablero::lugaresVacios()
+{
+    int vaciosX=0,vaciosY=0,i=0;
+    for (int row = 0; row < size; row++) //creo el tamaño de la lista de lugares vacios
+    {
+        for (int col = 0; col < size; col++)
+        {
+            if (world_Mapa[row][col] == 0) // 0 = vacio
+            {
+                vaciosX++;
+                vaciosY++;
+            }
+        }   
+    }
+    //CREACIÓN DEL NEW LISTAS
+    int *listaVaciaX = new int[vaciosX];
+    int *listaVaciaY = new int[vaciosY];
+
+    for (int row = 0; row < size; row++) //creo las posiciones de los lugares vacíos actuales
+    {
+        for (int col = 0; col < size; col++)
+        {
+            if (world_Mapa[row][col] == 0) // 0 = vacio
+            {
+                listaVaciaX[i] = row;
+                listaVaciaY[i] = col;
+                i++;
+            }
+        }
+    }
+
+    //métodos que tendran parámetros de lugares vacíos para colocarse
+    crecerGusano(listaVaciaX, listaVaciaY, vaciosX); 
+
+    delete[] listaVaciaX;
+    delete[] listaVaciaY;
 }

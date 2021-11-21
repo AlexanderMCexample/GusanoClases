@@ -64,5 +64,6 @@ class Tablero {
     void direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY);
     void buscarObstaculo();
 
-    void crecerGusano();
+    void crecerGusano(int *listaVaciaX, int *listaVaciaY, int _size);
+    void lugaresVacios();
 };

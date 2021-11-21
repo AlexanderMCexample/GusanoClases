@@ -28,7 +28,7 @@ class Comida {
     int getPosX();
     int getPosY();
     
-    void generar_aleatorio(int size);
+    void generar_aleatorio(int *listaVaciaX, int *listaVaciaY, int size);
     char getSimbolo();
     
 

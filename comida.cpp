@@ -34,11 +34,11 @@ int Comida::getPosY()
 {
     return pos_comida.gety();
 }
-void Comida::generar_aleatorio(int size) //Return posicición Y
+void Comida::generar_aleatorio(int *listaVaciaX, int *listaVaciaY, int size) //Return posicición Y
 {
 	srand(time(0));
-	setPosX((rand()%(size-2))+1);
-    setPosY((rand()%(size-2))+1);
+	setPosX(listaVaciaX[rand()%(size-1)]);
+    setPosY(listaVaciaY[rand()%(size-1)]);
 }
 char Comida::getSimbolo() //Return del simbolo de nuestra comida
 {
