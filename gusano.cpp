@@ -47,25 +47,26 @@ void Gusano::movimientoConstante()
     control.getDireccion(direccion);
     if (direccion == "ARRIBA")
     {
-        pos.incrementarY(-1);
+        pos.incrementarX(-1);
     }
     else if (direccion == "ABAJO")
     {
-        pos.incrementarY(1);
+        pos.incrementarX(1);
     }
     else if (direccion == "DERECHA")
     {
-        pos.incrementarX(1);
+        pos.incrementarY(1);
     }
     else if (direccion == "IZQUIERDA")
     {
-        pos.incrementarX(-1);
+        pos.incrementarY(-1);
     }
 }
 
 void Gusano::controlUno()
 {
     control.mando1();
+    
 }
 void Gusano::controlDos()
 {   

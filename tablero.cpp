@@ -9,7 +9,7 @@ using namespace std;
 
 void Tablero::imprimirMatriz()  //Método que se encarga de imprimir todo nuestro tablero de juego. Todos y cada uno de los elementos
 {
-	world_Mapa[comida.getPosY()][comida.getPosX()]=1;
+	world_Mapa[comida.getPosX()][comida.getPosY()]=1;
     world_Mapa[2][2] = 2;
 
     for (int row = 0; row < size; row++)
@@ -67,17 +67,15 @@ void Tablero::setControlGusanoDos()
 
 void Tablero::mandoGusanoUno()
 {
-    gusano[0].controlUno();
+        gusano[0].controlUno();
 }   
 void Tablero::mandoGusanoDos()
 {
-    gusano[1].controlDos();
+
+        gusano[1].controlDos();
 }
 void Tablero::movimientoGusano()
 {
-    std::string direccionGusano1 = gusano[0].control.getDireccion();
-    std::string direccionGusano2 = gusano[1].control.getDireccion();
-
     setPosicionesCabeza1();
     setPosicionesCabeza2();
 
@@ -92,34 +90,41 @@ void Tablero::movimientoGusano()
 
     world_Mapa[gusanoX1][gusanoY1]=5; //coloca la nueva posición
     world_Mapa[gusanoX2][gusanoY2]=6;
-
+}
+void Tablero::buscarObstaculo()
+{
     //CAMBIAR DIRECCION AL CHOCAR CON 3 = OBSTACULO
+    //============
+    std::string direccionGusano1 = gusano[0].control.getDireccion();
+    std::string direccionGusano2 = gusano[1].control.getDireccion();
+
     cout << direccionGusano1<<endl;
     cout << "X1 "<<gusanoX1<<" Y1 "<<gusanoY1<<endl;
     cout << "X2 "<<gusanoX2<<" Y2 "<<gusanoY2<<endl;
 
     cambiarDireccion(direccionGusano1,gusanoX1,gusanoY1);
     cambiarDireccion(direccionGusano2,gusanoX2,gusanoY2);
-
+    //============
+    
     gusano[0].control.setDireccion(direccionGusano1);
     gusano[1].control.setDireccion(direccionGusano2);
 }
 
 void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY)
 {
-    if (3 == world_Mapa[gusanoY][gusanoX-1] && _direccion == "ARRIBA")//obtener valores de gusano 
+    if (3 <= world_Mapa[gusanoX-1][gusanoY] && _direccion == "ARRIBA")//obtener valores de gusano 
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
     } 
-    else if (3 == world_Mapa[gusanoY][gusanoX+1] && _direccion == "ABAJO")
+    else if (3 <= world_Mapa[gusanoX+1][gusanoY] && _direccion == "ABAJO")
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
     } 
-    else if (3 == world_Mapa[gusanoY+1][gusanoX] && _direccion == "DERECHA")
+    else if (3 <= world_Mapa[gusanoX][gusanoY+1] && _direccion == "DERECHA")
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
     }
-    else if (3 == world_Mapa[gusanoY-1][gusanoX] && _direccion == "IZQUIERDA")
+    else if (3 <= world_Mapa[gusanoX][gusanoY-1] && _direccion == "IZQUIERDA")
     {
         direccionDisponible(_direccion,gusanoX,gusanoY);
     }
@@ -127,19 +132,19 @@ void Tablero::cambiarDireccion(std::string &_direccion, int gusanoX, int gusanoY
 
 void Tablero::direccionDisponible(std::string &_direccion, int gusanoX, int gusanoY)  //Método que nos ayuda a buscar una casilla vacía dentro de nuestro tablero para que los gusanos puedan cambiar su direción al chocar
 {
-    if (0 == world_Mapa[gusanoY][gusanoX-1])//si en una dirección esta vacia el gusano rebotará en esa direccion
+    if (3 > world_Mapa[gusanoX-1][gusanoY])//si en una dirección esta vacia el gusano rebotará en esa direccion
     {
         _direccion = "ARRIBA";
     } 
-    else if (0 == world_Mapa[gusanoY][gusanoX+1])
+    else if (3 > world_Mapa[gusanoX+1][gusanoY])
     {
         _direccion = "ABAJO";
     } 
-    else if (0 == world_Mapa[gusanoY+1][gusanoX])
+    else if (3 > world_Mapa[gusanoX][gusanoY+1])
     {
         _direccion = "DERECHA";
     }
-    else if (0 == world_Mapa[gusanoY-1][gusanoX])
+    else if (3 > world_Mapa[gusanoX][gusanoY-1])
     {
         _direccion = "IZQUIERDA";
     }
@@ -151,11 +156,11 @@ void Tablero::direccionDisponible(std::string &_direccion, int gusanoX, int gusa
 
 void Tablero::setPosicionesCabeza1()
 {
-    gusanoX1 = gusano[0].getCabezaPosY();
-    gusanoY1 = gusano[0].getCabezaPosX();
+    gusanoX1 = gusano[0].getCabezaPosX();
+    gusanoY1 = gusano[0].getCabezaPosY();
 }
 void Tablero::setPosicionesCabeza2()
 {
-    gusanoX2 = gusano[1].getCabezaPosY();
-    gusanoY2 = gusano[1].getCabezaPosX();
+    gusanoX2 = gusano[1].getCabezaPosX();
+    gusanoY2 = gusano[1].getCabezaPosY();
 }   

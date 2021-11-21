@@ -48,6 +48,7 @@ void tablero()
     while(true)
     {
         tabla.movimientoGusano(); //Actualiza los movimientos del gusano
+        tabla.buscarObstaculo();
         tabla.imprimirMatriz();
         for (double time = 0; time < 600;time+=0.05)  //tiempo para imprimir y capturar la tecla
         {
@@ -55,6 +56,7 @@ void tablero()
             tabla.mandoGusanoDos();
         }
         cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        
     }
 
 
