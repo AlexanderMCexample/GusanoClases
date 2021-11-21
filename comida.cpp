@@ -3,6 +3,8 @@
 
 using namespace std; 
 
+//Métodos de nuestra clase "Comida"
+
 void Comida::setSimbolo(char _simbolo) //Este Método nos sirve para llamar al simbolo de nuestra comida
 {
     simbolo = _simbolo; 
@@ -23,11 +25,11 @@ void Comida::getPosY(int &_y)  //Método que llama la posición X de nuestra com
 {
     pos_comida.gety(_y);
 }
-int Comida::getPosX() //Return posicición X
+int Comida::getPosX() //Return de la posición X de la comida
 {
     return pos_comida.getx(); 
 }
-int Comida::getPosY()
+int Comida::getPosY() //Return de la posición Y de la comida
 {
     return pos_comida.gety();
 }
