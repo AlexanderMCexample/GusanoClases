@@ -1,3 +1,9 @@
+//Clase Posicion
+//Esta clase nos ayuda a establecer y llamar la posición de todos nuestros objetos en el tablero, obstaculos, comida, poder, gusano.
+//Esta clase es utilizada por la mayoría de las demas clases.
+//Métodos creados: 
+// incrementarY; incrementarX; gety; getx; sety; setx
+
 class Posicion {
 	
     public:
