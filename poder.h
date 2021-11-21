@@ -1,3 +1,8 @@
+//Clase Poder
+//Esta clase es la que se encarga de la creación de nuestros objetos poder. Este fue nuestra propuesta cómo grupo en la entrega anterior. El poder reducira el tamaño de nuestro gusano, a diferencia de la comida que lo da más tamaño.
+//Métodos creados:
+//getSimbolo; Generarpoder; getVelocidadJuego; getPosY; getPosX; activarSenial; setPosY; setPosX; setSimbolo;
+
 class Poder {
 
     public:
