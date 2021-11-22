@@ -16,7 +16,7 @@ class Control {
         this -> derecha = derecha;
         this -> izquierda = izquierda;
         teclaPresionada = 0;
-        direccion = "";
+        direccion = "ARRIBA";
     }
     //Destructor
     ~Control(){

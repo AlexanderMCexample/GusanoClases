@@ -60,31 +60,32 @@ void tablero() //Función que, despues de establecer el tamaño del tablero, lla
         
         while(game)
         {
-            tabla->movimientoGusano(); //Actualiza los movimientos del gusano
-            tabla->imprimirMatriz();
-            for (double time = 0; time < 600-tabla->poder.getVelocidadJuego();time+=0.05)  //tiempo para imprimir y capturar la tecla
-            {
-                tabla->mandoGusanoUno();
-                tabla->mandoGusanoDos();
+          tabla->movimientoGusano(); //Actualiza los movimientos del gusano
+          tabla->imprimirRegistro();
+          tabla->imprimirMatriz();
+          
+          for (double time = 0; time < 600-tabla->poder.getVelocidadJuego();time+=0.05)  //tiempo para imprimir y capturar la tecla
+          {
+              tabla->mandoGusanoUno();
+              tabla->mandoGusanoDos();
 
-                if (_kbhit()) //capturar las teclas para el menu
-                {       
-                    tecla = _getch();
-                    if (tecla == 113 || tecla == 81) //si se presiona la letra q o Q
-                    {
-                        game = false;
-                    }
-                }
-            }
-            cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-            
-            if (game)
-            {
-                tabla->buscarObstaculo();
-                tabla->lugaresVacios();
-                tabla->imprimirRegistro();
-                tabla->perderJuego(game);        
-            }
+              if (_kbhit()) //capturar las teclas para el menu
+              {       
+                  tecla = _getch();
+                  if (tecla == 113 || tecla == 81) //si se presiona la letra q o Q
+                  {
+                      game = false;
+                  }
+              }
+          }
+          cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+          
+          if (game)
+          {
+              tabla->buscarObstaculo();
+              tabla->lugaresVacios();              
+              tabla->perderJuego(game);        
+          }
         }
         
         // texto del menu 
